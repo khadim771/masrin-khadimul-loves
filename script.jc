@@ -1,0 +1,722 @@
+/* =====================================
+   LOVE COUNTER
+===================================== */
+
+const startDate =
+  new Date("2026-06-02T00:00:00");
+
+function updateCounter() {
+
+  const now = new Date();
+
+  let difference =
+    Math.max(
+      0,
+      now - startDate
+    );
+
+  let totalSeconds =
+    Math.floor(
+      difference / 1000
+    );
+
+  const days =
+    Math.floor(
+      totalSeconds / 86400
+    );
+
+  const hours =
+    Math.floor(
+      (totalSeconds % 86400) / 3600
+    );
+
+  const minutes =
+    Math.floor(
+      (totalSeconds % 3600) / 60
+    );
+
+  const seconds =
+    totalSeconds % 60;
+
+
+  document.getElementById("days")
+    .textContent = days;
+
+  document.getElementById("hours")
+    .textContent = hours;
+
+  document.getElementById("minutes")
+    .textContent = minutes;
+
+  document.getElementById("seconds")
+    .textContent = seconds;
+}
+
+setInterval(
+  updateCounter,
+  1000
+);
+
+updateCounter();
+
+
+
+/* =====================================
+   SMOOTH SCROLL
+===================================== */
+
+function scrollToSection(id) {
+
+  document
+    .getElementById(id)
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+
+/* =====================================
+   SCROLL REVEAL
+===================================== */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (
+          entry.isIntersecting
+        ) {
+
+          entry.target
+            .classList
+            .add("show");
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(element => {
+
+    observer.observe(element);
+
+  });
+
+
+
+/* =====================================
+   FALLING HEARTS + ROSES
+===================================== */
+
+const particles =
+  document.getElementById(
+    "particles"
+  );
+
+
+function createPetal() {
+
+  const petal =
+    document.createElement(
+      "span"
+    );
+
+  petal.textContent =
+    Math.random() > .45
+      ? "♥"
+      : "🌹";
+
+  petal.style.position =
+    "absolute";
+
+  petal.style.left =
+    Math.random() * 100 + "vw";
+
+  petal.style.top =
+    "-30px";
+
+  petal.style.fontSize =
+    12 + Math.random() * 18 + "px";
+
+  petal.style.color =
+    "#ff86a8";
+
+  petal.style.filter =
+    "drop-shadow(0 0 7px #ff4d80)";
+
+  const duration =
+    6 + Math.random() * 8;
+
+  petal.style.animation =
+    `fall ${duration}s linear`;
+
+  particles.appendChild(
+    petal
+  );
+
+  setTimeout(() => {
+
+    petal.remove();
+
+  }, duration * 1000);
+}
+
+
+const fallingStyle =
+  document.createElement("style");
+
+fallingStyle.textContent = `
+
+@keyframes fall {
+
+  to {
+
+    transform:
+      translate3d(
+        120px,
+        110vh,
+        0
+      )
+      rotate(720deg);
+
+  }
+
+}
+`;
+
+document.head.appendChild(
+  fallingStyle
+);
+
+
+setInterval(
+  createPetal,
+  350
+);
+
+
+
+/* =====================================
+   STAR FIELD
+===================================== */
+
+const starCanvas =
+  document.getElementById(
+    "stars"
+  );
+
+const starContext =
+  starCanvas.getContext("2d");
+
+
+const fxCanvas =
+  document.getElementById(
+    "fx"
+  );
+
+const fxContext =
+  fxCanvas.getContext("2d");
+
+
+function resizeCanvas() {
+
+  starCanvas.width =
+    window.innerWidth;
+
+  starCanvas.height =
+    window.innerHeight;
+
+  fxCanvas.width =
+    window.innerWidth;
+
+  fxCanvas.height =
+    window.innerHeight;
+}
+
+window.addEventListener(
+  "resize",
+  resizeCanvas
+);
+
+resizeCanvas();
+
+
+const stars =
+  Array.from(
+    {
+      length: 110
+    },
+    () => ({
+
+      x:
+        Math.random() *
+        window.innerWidth,
+
+      y:
+        Math.random() *
+        window.innerHeight,
+
+      radius:
+        Math.random() * 1.7,
+
+      alpha:
+        Math.random() * 7
+
+    })
+  );
+
+
+function drawStars() {
+
+  starContext.clearRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight
+  );
+
+
+  stars.forEach(
+    star => {
+
+      star.alpha += .015;
+
+      starContext.globalAlpha =
+        .2 +
+        .45 *
+        (
+          Math.sin(
+            star.alpha
+          ) + 1
+        ) / 2;
+
+      starContext.fillStyle =
+        "#ffe0ea";
+
+      starContext.beginPath();
+
+      starContext.arc(
+        star.x,
+        star.y,
+        star.radius,
+        0,
+        Math.PI * 2
+      );
+
+      starContext.fill();
+
+    }
+  );
+
+
+  requestAnimationFrame(
+    drawStars
+  );
+}
+
+
+drawStars();
+
+
+
+/* =====================================
+   MUSIC
+===================================== */
+
+let audioContext = null;
+let oscillator = null;
+let musicOn = false;
+
+
+document
+  .getElementById("musicBtn")
+  .addEventListener(
+    "click",
+    () => {
+
+      if (!musicOn) {
+
+        audioContext =
+          new AudioContext();
+
+        oscillator =
+          audioContext
+            .createOscillator();
+
+        const gain =
+          audioContext
+            .createGain();
+
+
+        oscillator.type =
+          "sine";
+
+        oscillator.frequency.value =
+          220;
+
+        gain.gain.value =
+          0.018;
+
+
+        oscillator
+          .connect(gain)
+          .connect(
+            audioContext.destination
+          );
+
+        oscillator.start();
+
+        musicOn = true;
+
+        document
+          .getElementById(
+            "musicBtn"
+          )
+          .textContent =
+          "♫ Music On";
+
+        showToast(
+          "Soft music is on 🎶"
+        );
+
+      }
+
+      else {
+
+        oscillator.stop();
+
+        musicOn = false;
+
+        document
+          .getElementById(
+            "musicBtn"
+          )
+          .textContent =
+          "♫ Music";
+
+        showToast(
+          "Music off"
+        );
+
+      }
+
+    }
+  );
+
+
+
+/* =====================================
+   ENVELOPE
+===================================== */
+
+document
+  .getElementById("envelope")
+  .addEventListener(
+    "click",
+    function () {
+
+      this.classList.toggle(
+        "open"
+      );
+
+      showToast(
+        "A little letter from my heart 💌"
+      );
+
+    }
+  );
+
+
+
+/* =====================================
+   MAYBE BUTTON
+===================================== */
+
+const noButton =
+  document.getElementById(
+    "noButton"
+  );
+
+
+noButton.addEventListener(
+  "mouseenter",
+  () => {
+
+    noButton.style.transform =
+      `translate(
+        ${(Math.random() - .5) * 180}px,
+        ${(Math.random() - .5) * 110}px
+      )`;
+
+  }
+);
+
+
+noButton.addEventListener(
+  "click",
+  () => {
+
+    showToast(
+      "This button is too shy 😌❤️"
+    );
+
+  }
+);
+
+
+
+/* =====================================
+   FIREWORKS
+===================================== */
+
+let fireworksParticles = [];
+
+
+function fireworks() {
+
+  for (
+    let k = 0;
+    k < 8;
+    k++
+  ) {
+
+    const x =
+      Math.random() *
+      window.innerWidth;
+
+    const y =
+      100 +
+      Math.random() *
+      window.innerHeight *
+      .65;
+
+
+    for (
+      let i = 0;
+      i < 65;
+      i++
+    ) {
+
+      const angle =
+        Math.random() *
+        Math.PI *
+        2;
+
+      const velocity =
+        2 +
+        Math.random() * 7;
+
+
+      fireworksParticles.push({
+
+        x: x,
+
+        y: y,
+
+        vx:
+          Math.cos(angle) *
+          velocity,
+
+        vy:
+          Math.sin(angle) *
+          velocity,
+
+        life: 1
+
+      });
+
+    }
+
+  }
+
+}
+
+
+function drawFireworks() {
+
+  fxContext.clearRect(
+    0,
+    0,
+    window.innerWidth,
+    window.innerHeight
+  );
+
+
+  fireworksParticles
+    .forEach(
+      particle => {
+
+        particle.x +=
+          particle.vx;
+
+        particle.y +=
+          particle.vy;
+
+        particle.vy +=
+          .05;
+
+        particle.life -=
+          .012;
+
+
+        fxContext.globalAlpha =
+          Math.max(
+            0,
+            particle.life
+          );
+
+
+        const colors = [
+          "#ff6b98",
+          "#ffd77d",
+          "#ffffff",
+          "#ffabc7"
+        ];
+
+
+        fxContext.fillStyle =
+          colors[
+            Math.floor(
+              Math.random() *
+              colors.length
+            )
+          ];
+
+
+        fxContext.beginPath();
+
+        fxContext.arc(
+          particle.x,
+          particle.y,
+          2.5,
+          0,
+          Math.PI * 2
+        );
+
+        fxContext.fill();
+
+      }
+    );
+
+
+  fireworksParticles =
+    fireworksParticles.filter(
+      particle =>
+        particle.life > 0
+    );
+
+
+  requestAnimationFrame(
+    drawFireworks
+  );
+
+}
+
+
+drawFireworks();
+
+
+
+/* =====================================
+   YES ❤️
+===================================== */
+
+function yesLove() {
+
+  document
+    .getElementById(
+      "finalMessage"
+    )
+    .classList.add(
+      "show"
+    );
+
+
+  fireworks();
+
+
+  for (
+    let i = 0;
+    i < 110;
+    i++
+  ) {
+
+    setTimeout(
+      fireworks,
+      i * 18
+    );
+
+  }
+
+
+  showToast(
+    "Forever mode unlocked 💖"
+  );
+
+}
+
+
+
+/* =====================================
+   TOAST
+===================================== */
+
+function showToast(message) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent =
+    message;
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    () => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
+    2300
+  );
+
+}
+
+
+
+/* =====================================
+   FULLSCREEN
+===================================== */
+
+function openFullscreen() {
+
+  if (
+    document.documentElement
+      .requestFullscreen
+  ) {
+
+    document.documentElement
+      .requestFullscreen();
+
+  }
+
+}
