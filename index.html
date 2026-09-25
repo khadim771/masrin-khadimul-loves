@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masrin ❤️ Khadimul — Our Forever</title>
+<meta name="description" content="A little love story made for Masrin, from Khadimul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#ff6f91; --soft:#ffd6df; --gold:#f7d58b; --ink:#09050a;
+  --wine:#220912; --glass:rgba(255,255,255,.075);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:radial-gradient(circle at 50% 0%,#35111f 0,#12070d 35%,#050307 100%);
+  color:#fff; font-family:Montserrat,sans-serif; overflow-x:hidden;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:20;
+  background:radial-gradient(circle at center,transparent 45%,rgba(0,0,0,.5) 100%);
+}
+canvas#stars{position:fixed;inset:0;z-index:-2;opacity:.8}
+#petals{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.petal{position:absolute;top:-30px;font-size:18px;animation:fall linear forwards;filter:drop-shadow(0 0 7px rgba(255,105,145,.5))}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:.1}}
+section{position:relative;min-height:100vh;padding:90px 20px;display:grid;place-items:center}
+.container{width:min(1100px,100%);margin:auto}
+.script{font-family:"Great Vibes",cursive}
+.serif{font-family:"Cormorant Garamond",serif}
+.muted{color:#e5cfd5}
+.kicker{text-transform:uppercase;letter-spacing:5px;font-size:.72rem;color:var(--gold);margin-bottom:18px}
+.btn{
+  border:1px solid rgba(255,255,255,.22); color:#fff; background:rgba(255,255,255,.08);
+  padding:14px 23px;border-radius:999px;cursor:pointer;transition:.35s;backdrop-filter:blur(12px);
+  font-family:Montserrat,sans-serif;letter-spacing:1px
+}
+.btn:hover{transform:translateY(-3px) scale(1.02);background:rgba(255,111,145,.2);box-shadow:0 0 35px rgba(255,111,145,.2)}
+#hero{text-align:center;overflow:hidden}
+.hero-glow{position:absolute;width:55vw;height:55vw;max-width:650px;max-height:650px;border-radius:50%;
+background:radial-gradient(circle,rgba(255,75,120,.23),transparent 67%);filter:blur(5px);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12);opacity:.7}}
+.hero-heart{font-size:50px;animation:heartbeat 1.8s infinite;filter:drop-shadow(0 0 25px #ff4f7a)}
+@keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.1)}}
+.hero-names{font-size:clamp(3.4rem,10vw,7.6rem);line-height:.95;margin:16px 0 22px}
+.hero-names span{color:var(--rose)}
+.hero-sub{max-width:680px;margin:0 auto 30px;font-size:1rem;line-height:1.9;color:#eadce0}
+.scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:.7rem;letter-spacing:4px;color:#cbb4bc;animation:bounce 2s infinite}
+@keyframes bounce{50%{transform:translate(-50%,8px)}}
+.reveal{opacity:0;transform:translateY(40px);transition:1s ease}
+.reveal.show{opacity:1;transform:none}
+.photo-wrap{position:relative;width:min(470px,90vw);margin:auto}
+.photo-wrap:before,.photo-wrap:after{content:"";position:absolute;inset:-14px;border:1px solid rgba(255,213,139,.45);border-radius:24px;transform:rotate(3deg);z-index:-1}
+.photo-wrap:after{transform:rotate(-4deg);border-color:rgba(255,111,145,.35)}
+.photo{display:block;width:100%;border-radius:20px;box-shadow:0 30px 90px rgba(0,0,0,.65);filter:saturate(1.05)}
+.caption{text-align:center;margin-top:24px;font-size:1.05rem;line-height:1.8}
+.title{text-align:center;font-size:clamp(2.7rem,7vw,5rem);margin-bottom:18px}
+.section-intro{text-align:center;max-width:700px;margin:0 auto 55px;line-height:1.9;color:#d8c8ce}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:800px;margin:30px auto}
+.counter-box{padding:24px 10px;background:var(--glass);border:1px solid rgba(255,255,255,.1);border-radius:18px;backdrop-filter:blur(14px)}
+.counter-box strong{display:block;font-size:clamp(1.8rem,5vw,3rem);font-family:"Cormorant Garamond";color:var(--soft)}
+.counter-box span{font-size:.68rem;letter-spacing:2px;color:#bca9b0;text-transform:uppercase}
+.timeline{max-width:780px;margin:auto;position:relative}
+.timeline:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(transparent,var(--rose),transparent)}
+.event{width:46%;padding:24px;background:var(--glass);border:1px solid rgba(255,255,255,.1);border-radius:20px;margin:28px 0;position:relative;backdrop-filter:blur(12px)}
+.event:nth-child(odd){margin-right:auto}.event:nth-child(even){margin-left:auto}
+.event h3{font-family:"Cormorant Garamond";font-size:1.7rem;color:var(--soft);margin-bottom:7px}
+.event p{line-height:1.8;color:#d6c6cc;font-size:.9rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:30px 22px;min-height:190px;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.035));
+border:1px solid rgba(255,255,255,.11);border-radius:24px;transition:.5s;position:relative;overflow:hidden}
+.card:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;right:-50px;bottom:-50px;background:rgba(255,111,145,.12)}
+.card:hover{transform:translateY(-9px) rotateX(2deg);border-color:rgba(255,111,145,.35);box-shadow:0 25px 60px rgba(0,0,0,.25)}
+.card .icon{font-size:30px;margin-bottom:15px}.card h3{font-family:"Cormorant Garamond";font-size:1.65rem;margin-bottom:9px}.card p{color:#d8cbd0;line-height:1.75;font-size:.9rem}
+.letter{max-width:760px;margin:auto;padding:48px clamp(24px,6vw,65px);border:1px solid rgba(255,213,139,.22);background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border-radius:28px;box-shadow:0 25px 80px rgba(0,0,0,.25);position:relative}
+.letter:before{content:"❦";position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:25px;color:var(--gold)}
+.letter p{font-family:"Cormorant Garamond";font-size:1.35rem;line-height:1.8;color:#f0e4e7;margin:15px 0}
+.signature{font-family:"Great Vibes";font-size:3rem;color:var(--rose);text-align:right;margin-top:25px}
+.envelope{width:170px;height:115px;background:#5b1427;margin:0 auto 30px;border-radius:10px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 49%,#7d1d37 50%,transparent 51%),linear-gradient(225deg,transparent 49%,#7d1d37 50%,transparent 51%);border-radius:10px}
+.big-question{text-align:center}
+.question{font-family:"Cormorant Garamond";font-size:clamp(3.2rem,9vw,7rem);line-height:1;color:#fff;text-shadow:0 0 35px rgba(255,111,145,.3)}
+.question span{color:var(--rose)}
+.choice{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:35px}
+#yesBtn{background:linear-gradient(135deg,#ff5f87,#c91f55);border:0;box-shadow:0 0 40px rgba(255,95,135,.3);font-weight:600}
+#secret{display:none;margin-top:35px}
+#secret.show{display:block;animation:pop .8s both}
+@keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+footer{text-align:center;padding:50px 20px;color:#aa98a0;font-size:.8rem;letter-spacing:1px}
+#toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:rgba(20,5,12,.88);border:1px solid rgba(255,111,145,.35);padding:13px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.4s;z-index:50;backdrop-filter:blur(12px)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){
+  section{padding:75px 16px}.counter-grid{grid-template-columns:repeat(2,1fr)}
+  .cards{grid-template-columns:1fr}.timeline:before{left:9px}.event,.event:nth-child(even),.event:nth-child(odd){width:calc(100% - 28px);margin-left:28px;margin-right:0}
+  .hero-names{font-size:3.7rem}.letter p{font-size:1.18rem}.photo-wrap{width:min(430px,92vw)}
+}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="petals"></div>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container reveal">
+    <div class="hero-heart">♥</div>
+    <div class="kicker">A little universe made for two</div>
+    <h1 class="hero-names serif">Masrin <span>♥</span> Khadimul</h1>
+    <p class="hero-sub serif">Some stories are written in books. Ours is written in smiles, little moments, late-night thoughts, and two hearts that somehow found each other.</p>
+    <button class="btn" onclick="document.querySelector('#story').scrollIntoView({behavior:'smooth'})">Enter Our Story ♥</button>
+  </div>
+  <div class="scroll">SCROLL TO BEGIN ↓</div>
+</section>
+
+<section id="story">
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker" style="text-align:center">Our beautiful beginning</div>
+      <h2 class="title serif">One picture. A thousand feelings.</h2>
+      <div class="photo-wrap"><img class="photo" src="assets/couple.png" alt="Masrin and Khadimul together"></div>
+      <p class="caption serif">“If I could keep one moment in a frame forever, I think I would choose this one.”<br><span style="color:var(--gold)">— Khadimul</span></p>
+    </div>
+
+    <div class="reveal" style="margin-top:90px">
+      <div class="kicker" style="text-align:center">Our special date</div>
+      <h2 class="title serif">02 • 06 • 2026</h2>
+      <p class="section-intro">A date is only a number until two hearts give it a meaning. For us, this is one of those dates I never want to forget.</p>
+      <div class="counter-grid">
+        <div class="counter-box"><strong id="days">0</strong><span>Days</span></div>
+        <div class="counter-box"><strong id="hours">0</strong><span>Hours</span></div>
+        <div class="counter-box"><strong id="minutes">0</strong><span>Minutes</span></div>
+        <div class="counter-box"><strong id="seconds">0</strong><span>Seconds</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker" style="text-align:center">A little timeline</div>
+      <h2 class="title serif">Our story, one heartbeat at a time</h2>
+      <div class="timeline">
+        <div class="event"><h3>The Beginning ✨</h3><p>Somewhere between an ordinary day and an unexpected smile, our story started becoming something extraordinary.</p></div>
+        <div class="event"><h3>The Little Things 🌙</h3><p>It was never only the big moments. It was the tiny conversations, the laughs, the care, and the comfort of simply having you.</p></div>
+        <div class="event"><h3>02 June 2026 💍</h3><p>A date that deserves a place in our little universe — a reminder that beautiful chapters can begin at the most unexpected moments.</p></div>
+        <div class="event"><h3>Today & Forever ❤️</h3><p>And now I don't just want beautiful memories. I want a lifetime of them — with you beside me.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker" style="text-align:center">Why you are my person</div>
+      <h2 class="title serif">A few reasons my heart chose you</h2>
+      <p class="section-intro">I could write a thousand reasons. These are only a few.</p>
+      <div class="cards">
+        <div class="card"><div class="icon">🌹</div><h3>Your smile</h3><p>Somehow, your smile can make an ordinary day feel like a beautiful one.</p></div>
+        <div class="card"><div class="icon">🫶</div><h3>Your heart</h3><p>The warmth and care you carry makes me feel lucky in ways words can't fully explain.</p></div>
+        <div class="card"><div class="icon">🌙</div><h3>Your presence</h3><p>Even silence feels comfortable when it is shared with you.</p></div>
+        <div class="card"><div class="icon">✨</div><h3>Your little things</h3><p>The tiny habits, expressions and moments you may not notice are often my favorites.</p></div>
+        <div class="card"><div class="icon">🏡</div><h3>You feel like home</h3><p>Home became less about a place and more about the person I want beside me.</p></div>
+        <div class="card"><div class="icon">♾️</div><h3>Simply… you</h3><p>After every reason, every memory and every thought, the answer is still the same: you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker" style="text-align:center">A letter from my heart</div>
+      <h2 class="title serif">For Masrin ❤️</h2>
+      <div class="letter">
+        <p>My love,</p>
+        <p>I don't know if a website can ever hold everything I feel for you, but I wanted to make a tiny world where every little thing says one sentence: <em>I love you.</em></p>
+        <p>Thank you for the smiles, the patience, the memories, the quiet moments, and all the little pieces of life that become special simply because you are there.</p>
+        <p>If life gives me a thousand more days, I want to fill them with you. More laughter. More photos. More silly moments. More late-night talks. More memories that we will look back on and smile about.</p>
+        <p>And if I had to choose you again, in every lifetime and every version of this story, I would still choose you.</p>
+        <div class="signature">Forever yours,<br>Khadimul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="reveal big-question">
+      <div class="hero-heart">♥</div>
+      <div class="kicker">One last question</div>
+      <h2 class="question serif">Masrin,<br><span>will you choose me</span><br>again & again?</h2>
+      <p class="section-intro" style="margin-top:25px">Not just for the perfect days. For the silly days, difficult days, quiet days, and every beautiful day in between.</p>
+      <div class="choice">
+        <button id="yesBtn" class="btn">YES, ALWAYS ❤️</button>
+        <button id="loveBtn" class="btn">I LOVE YOU 💕</button>
+      </div>
+      <div id="secret" class="letter">
+        <p style="text-align:center;font-size:1.6rem">Then let's keep writing this story.</p>
+        <p style="text-align:center">One day. One laugh. One memory. One heartbeat at a time.</p>
+        <div class="signature" style="text-align:center">Masrin ♥ Khadimul</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Made with all my heart • Masrin & Khadimul • 02.06.2026</footer>
+<div id="toast">I love you more than yesterday ❤️</div>
+
+<script>
+const anniversary = new Date("2026-06-02T00:00:00");
+function updateCounter(){
+  let diff = Math.max(0, Date.now() - anniversary.getTime());
+  const d=Math.floor(diff/86400000); diff%=86400000;
+  const h=Math.floor(diff/3600000); diff%=3600000;
+  const m=Math.floor(diff/60000); const s=Math.floor((diff%60000)/1000);
+  document.getElementById("days").textContent=d.toLocaleString();
+  document.getElementById("hours").textContent=String(h).padStart(2,"0");
+  document.getElementById("minutes").textContent=String(m).padStart(2,"0");
+  document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+}
+updateCounter(); setInterval(updateCounter,1000);
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+const petals=document.getElementById("petals");
+function petal(){
+  const p=document.createElement("div"); p.className="petal"; p.textContent=Math.random()>.35?"🌹":"♥";
+  p.style.left=Math.random()*100+"vw";
+  p.style.setProperty("--x",(Math.random()*40-20)+"vw");
+  p.style.animationDuration=(6+Math.random()*7)+"s";
+  p.style.opacity=.25+Math.random()*.6;
+  petals.appendChild(p); setTimeout(()=>p.remove(),14000);
+}
+setInterval(petal,900); for(let i=0;i<8;i++)setTimeout(petal,i*350);
+
+function confetti(){
+  for(let i=0;i<90;i++){
+    const c=document.createElement("div"); c.textContent=Math.random()>.35?"❤️":"✨";
+    c.style.position="fixed"; c.style.left=(Math.random()*100)+"vw"; c.style.top="-20px";
+    c.style.zIndex=100; c.style.fontSize=(12+Math.random()*18)+"px";
+    c.style.transition="transform "+(2+Math.random()*2)+"s linear, opacity 3s";
+    document.body.appendChild(c);
+    requestAnimationFrame(()=>{c.style.transform=`translate(${(Math.random()*30-15)}vw, ${110+Math.random()*20}vh) rotate(${Math.random()*900}deg)`;c.style.opacity=0});
+    setTimeout(()=>c.remove(),4500);
+  }
+}
+function toast(msg){
+  const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2600);
+}
+document.getElementById("yesBtn").onclick=()=>{
+  document.getElementById("secret").classList.add("show"); confetti(); toast("My heart just smiled. ❤️");
+  document.getElementById("secret").scrollIntoView({behavior:"smooth",block:"center"});
+};
+document.getElementById("loveBtn").onclick=()=>toast("And I love you, Masrin. More than words can say. 💕");
+
+const canvas=document.getElementById("stars"),ctx=canvas.getContext("2d");
+let stars=[];
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;stars=Array.from({length:90},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.4+.2,a:Math.random()}))}
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  stars.forEach(s=>{s.a+=.01;ctx.globalAlpha=.25+.35*Math.sin(s.a);ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle="#fff";ctx.fill()});
+  requestAnimationFrame(draw);
+}
+addEventListener("resize",resize); resize(); draw();
+</script>
+</body>
+</html>
