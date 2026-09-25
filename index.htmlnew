@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Masrin Islam ❤️ Khadimul Hoque</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Background Effects -->
+  <canvas id="stars"></canvas>
+  <canvas id="fx"></canvas>
+  <div id="particles"></div>
+
+  <!-- Top Buttons -->
+  <div class="top-buttons">
+    <button class="glass-btn" id="musicBtn">♫ Music</button>
+    <button class="glass-btn" onclick="openFullscreen()">⛶</button>
+  </div>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-glow"></div>
+
+    <div class="container reveal">
+
+      <div class="heart-beat">♥</div>
+
+      <div class="small-title">
+        OUR LITTLE UNIVERSE
+      </div>
+
+      <h1 class="names">
+        Masrin Islam
+        <span>♥</span>
+        <br>
+        Khadimul Hoque
+      </h1>
+
+      <p class="hero-text">
+        Some love stories are written in books.
+        Ours is written in little moments, quiet smiles,
+        endless care and every heartbeat that whispers
+        your name.
+      </p>
+
+      <button class="main-btn"
+        onclick="scrollToSection('photoSection')">
+        Enter Our Story ✨
+      </button>
+
+      <div class="scroll-text">
+        SCROLL SLOWLY · LOVE IS WAITING ↓
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PHOTO -->
+  <section id="photoSection">
+
+    <div class="container reveal">
+
+      <div class="small-title">
+        ONE FRAME · INFINITE FEELINGS
+      </div>
+
+      <h2 class="section-title">
+        The Smile I Want Forever
+      </h2>
+
+      <div class="photo-frame">
+
+        <img
+          src="assets/couple.png"
+          alt="Masrin Islam and Khadimul Hoque"
+          class="couple-photo"
+        >
+
+      </div>
+
+      <p class="romantic-quote">
+        “In a world full of beautiful places,
+        my favorite place is beside you.” ❤️
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- COUNTER -->
+  <section>
+
+    <div class="container reveal">
+
+      <div class="small-title">
+        OUR CLOCK
+      </div>
+
+      <h2 class="section-title">
+        Every Second With You Matters
+      </h2>
+
+      <div class="counter">
+
+        <div class="counter-box">
+          <strong id="days">0</strong>
+          <span>DAYS</span>
+        </div>
+
+        <div class="counter-box">
+          <strong id="hours">0</strong>
+          <span>HOURS</span>
+        </div>
+
+        <div class="counter-box">
+          <strong id="minutes">0</strong>
+          <span>MINUTES</span>
+        </div>
+
+        <div class="counter-box">
+          <strong id="seconds">0</strong>
+          <span>SECONDS</span>
+        </div>
+
+      </div>
+
+      <p class="sub-text">
+        Counting every beautiful moment from
+        <b>02 June 2026</b>.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- WHY YOU -->
+  <section>
+
+    <div class="container reveal">
+
+      <div class="small-title">
+        WHY MY HEART CHOSE YOU
+      </div>
+
+      <h2 class="section-title">
+        My Favorite Things About You
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-icon">🌹</div>
+          <h3>Your Smile</h3>
+          <p>
+            The kind of smile that makes a bad day
+            quietly surrender.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🌙</div>
+          <h3>Your Presence</h3>
+          <p>
+            Even silence feels beautiful when
+            you are beside me.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💗</div>
+          <h3>Your Heart</h3>
+          <p>
+            Your kindness is the place where
+            my heart feels safe.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MEMORIES -->
+  <section>
+
+    <div class="container reveal">
+
+      <div class="small-title">
+        OUR CHAPTERS
+      </div>
+
+      <h2 class="section-title">
+        A Story I Never Want To Finish
+      </h2>
+
+      <div class="memory-grid">
+
+        <div class="memory">
+          <span>CHAPTER 01</span>
+          <h3>The Beginning</h3>
+          <p>
+            Two names became a conversation,
+            then a feeling, then something
+            I never wanted to lose.
+          </p>
+        </div>
+
+        <div class="memory">
+          <span>CHAPTER 02</span>
+          <h3>The Little Things</h3>
+          <p>
+            Every message, laugh, tease and
+            “take care” became a piece of our story.
+          </p>
+        </div>
+
+        <div class="memory">
+          <span>CHAPTER 03</span>
+          <h3>The Promise</h3>
+          <p>
+            I don't promise perfection.
+            I promise to keep choosing you.
+          </p>
+        </div>
+
+        <div class="memory">
+          <span>CHAPTER 04</span>
+          <h3>Forever</h3>
+          <p>
+            If life is a long road,
+            I want your hand in mine
+            for every beautiful mile.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LOVE LETTER -->
+  <section>
+
+    <div class="container reveal">
+
+      <div class="small-title">
+        OPEN SLOWLY
+      </div>
+
+      <h2 class="section-title">
+        A Letter For Masrin
+      </h2>
+
+      <div class="envelope" id="envelope">
+
+        <div class="envelope-body"></div>
+
+        <div class="envelope-flap"></div>
+
+        <div class="envelope-heart">
+          ♥
+        </div>
+
+      </div>
+
+      <div class="love-letter">
+
+        <p>Dear Masrin,</p>
+
+        <p>
+          I don't need a thousand reasons to love you.
+          I only need one —
+          you are you.
+        </p>
+
+        <p>
+          When life gets loud,
+          I want to be your calm.
+          When you smile,
+          I want to be one of the reasons.
+        </p>
+
+        <p>
+          When you dream,
+          I want to stand beside you
+          and cheer for every beautiful
+          thing waiting ahead.
+        </p>
+
+        <p>
+          I cannot promise that every day
+          will be perfect.
+          But I can promise to keep learning you,
+          respecting you, laughing with you,
+          and choosing you.
+        </p>
+
+        <p>
+          So if forever is a road,
+          let me walk it with you —
+          hand in hand,
+          heart to heart.
+        </p>
+
+        <div class="signature">
+          Always yours,<br>
+          Khadimul ❤️
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROPOSAL -->
+  <section class="proposal">
+
+    <div class="container reveal">
+
+      <div class="ring">
+        💍
+      </div>
+
+      <div class="small-title">
+        ONE LAST QUESTION
+      </div>
+
+      <h2 class="proposal-question">
+
+        Masrin Islam,<br>
+
+        Will You Choose Me
+        Again And Again?
+
+      </h2>
+
+      <p class="sub-text">
+        Because my heart already knows
+        which name it whispers when
+        the world becomes quiet.
+      </p>
+
+      <div class="proposal-buttons">
+
+        <button class="main-btn"
+          onclick="yesLove()">
+          YES, MY LOVE ❤️
+        </button>
+
+        <button class="glass-btn"
+          id="noButton">
+          Maybe…
+        </button>
+
+      </div>
+
+
+      <!-- YES RESULT -->
+
+      <div id="finalMessage" class="final-message">
+
+        <h2>
+          She Said YES! 💖
+        </h2>
+
+        <p>
+          Then this isn't the ending.
+
+          It's the beginning of our forever.
+
+          Let's turn ordinary days into
+          little love stories.
+        </p>
+
+        <button class="main-btn"
+          onclick="fireworks()">
+          More Fireworks ✨
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    Made with infinite love by
+
+    <b>Khadimul Hoque</b>
+
+    for
+
+    <b>Masrin Islam</b>
+
+    ❤️
+
+    <br><br>
+
+    02 / 06 / 2026
+
+  </footer>
+
+
+  <div id="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
